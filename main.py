@@ -88,7 +88,11 @@ def predict():
         return jsonify("Nenhuma imagem foi enviada")
     
     try:
-        img_data = base64.b64decode(dados['imagem'])
+        img_base64 = dados['imagem']
+        if ',' in img_base64:
+            img_base64 = img_base64.split(',', 1)[1]
+
+        img_data = base64.b64decode(img_base64)
         img = Image.open(BytesIO(img_data)).convert('RGB')
     except Exception as e:
         return jsonify("Erro ao processar a imagem. Erro -> " + str(e))
