@@ -48,7 +48,7 @@ def format_response(predictions):
     """
     try:
         # Formata a resposta (substitua as labels conforme as classes do seu dataset)
-        class_labels = ["cardboard","glass","metal","paper","plastic","trash"]
+        class_labels = ["Papelão","Vidro","Metal","Papel","Plastico","Lixo"]
         response = [
             {'classe': class_labels[i], 'probabilidade': f"{prob * 100:.2f} %"} 
             for i, prob in enumerate(predictions[0])
